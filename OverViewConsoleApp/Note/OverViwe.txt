@@ -1,0 +1,65 @@
+﻿一、基础构成
+1.Host;
+	1.1 IServiceProvider;
+	1.2 IStartup to configure application services and middleware;
+	1.3 IConfiguration
+	1.4 ILogger
+	1.5 WebHostingOptions
+	1.6 IServer;
+2.Kestrel Server/HttpSys Server/IIS Server;
+3.Middlewares;
+	3.1 build to a RequestDelegate;(Task (HttpContext));
+4.Application(Last Middleware Or Process request middleware);
+5.DI Container(Throughout all process pipeline and middleware to provider require services);
+二、基础服务
+1.DI Container
+	1.1 IServiceProvider
+	1.2 IServiceCollection(IList<ServiceDescriptor>, ICollection<ServiceDescriptor>, IEnumerable<ServiceDescriptor>)
+	1.3 Service Lift Time(singleton,scope,transient);
+	1.4 ServiceDescriptor(type,implementType,liftTime);
+	1.5 IServiceScopeFactory
+	1.6 IServiceScope(packing a ServiceProvider);
+2.FileSystem
+	2.1 IFileProvider
+	2.2 PhysicalFileProvider
+	2.3 EmbededFileProvider
+3.Configuration
+	3.1 IConfiguration
+	3.2 ConfigurationRoot,ConfigurationSection
+	3.3 ConfigurationProvider(MemoryConfigurationProvider,FileConfigurationProvider,JsonConfigurationProvider,IniConfigurationProvider,CommandLineConfigurationProvider,EnviromentConfigurationProvider etc)
+	3.4 ConfigurationSource(MemoryConfiguationSource etc)
+	3.5 Configurtion binder
+4.Logging
+	4.1 ILogger
+	4.2 ILoggerProvider
+	4.3 ILoggerFactory
+	4.4 Logger(Console,Debugger,EventLog etc)
+三、基础中间件
+1.Static file middleware
+	1.1 Process Static file (css,html,img,svg etc)
+2.Directory browser middleware
+	2.1 Process Directory browser request;
+3.Route middleware
+	3.1 Route request to application by route rules;
+	3.2 Router
+	3.3 Route
+4.Cache middleware
+	4.1 DistributeCache
+	4.2 HttpResponse Cache;
+5.Session middleware
+	5.1 Use DistributedCache Service to store Session;
+6.WebSockets middleware
+	6.1 Process websocket request and manager websocket
+7.Authentication middleware
+	7.1 IAuthenticationSchemeProvider;
+	7.2 IAuthenticationHandlerProvider(Use IAuthenticationSchemeProvider to provider handler to process request handler);
+	7.3 IAuthenticationRequestHandler (handler implement this interface,if register to pipeline,it will be call per request);
+	7.4 IAuthenticationHandler (hanlder implement this interface,only this handler is default scheme,then it will be call);
+	7.5 AuthneticationScheme(HandlerType,Name,DisplayName) HandlerType must implement IAuthenticatioinHandler;
+四、扩展服务
+1.Distribute cache service
+	1.1 Memory Cache service;
+	1.2 Redis Cache service;
+	1.3 Sqlserver Cache service;
+2.Proxy
+3.Localization

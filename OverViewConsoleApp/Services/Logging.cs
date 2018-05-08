@@ -23,12 +23,19 @@ namespace OverViewConsoleApp.Services
 
         public static IServiceProvider GetServiceProvider()
         {
-            var services = new ServiceCollection().AddLogging(options=> 
+            var services = new ServiceCollection().AddLogging(options =>
             {
                 options.AddFileLogger();
             });
             services.TryAddEnumerable(ServiceDescriptor.Singleton<ILoggerProvider, ConsoleLoggerProvider>());
             return services.BuildServiceProvider();
+        }
+
+        public static void GetService()
+        {
+            IServiceProvider serviceProvider = GetServiceProvider();
+            serviceProvider.GetService<IServiceScopeFactory>().CreateScope();
+            IServiceCollection
         }
     }
 }

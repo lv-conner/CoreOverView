@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using OverViewWebApplicaiton.Filters;
 using OverViewWebApplicaiton.Options;
 
 namespace OverViewWebApplicaiton
@@ -26,7 +27,9 @@ namespace OverViewWebApplicaiton
         public void ConfigureServices(IServiceCollection services)
         {
             //MVC related services
-            services.AddMvc();
+            services.AddMvc(options=>
+            {
+            });
             //Authentication services
             services.AddAuthentication("cookie").AddCookie("cookie", options =>
              {
@@ -45,7 +48,7 @@ namespace OverViewWebApplicaiton
                 });
             });
             services.Configure<UserProfileOptions>(Configuration.GetSection("UserProfieOption"));
-
+            services.AddSingleton<CustomerFilter>();
 
             ApplicationPartManager applicationPartManager = services.BuildServiceProvider().GetService<ApplicationPartManager>();
         }

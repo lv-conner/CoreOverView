@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using OverViewWebApplicaiton.Filters;
 using OverViewWebApplicaiton.Models;
 
 namespace OverViewWebApplicaiton.Controllers
@@ -40,6 +41,12 @@ namespace OverViewWebApplicaiton.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        [Id]
+        public IActionResult Value(int id)
+        {
+            return Content(id.ToString());
         }
     }
 }

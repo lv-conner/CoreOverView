@@ -19,25 +19,8 @@ namespace OverViewConsoleApp
     {
         static void Main(string[] args)
         {
-            var person = new Person()
-            {
-                Name = "tim",
-                Id = "001"
-            };
-            var stu = new Student()
-            {
-            };
-            Mapper.Initialize(config =>
-            {
-                config.CreateMap<Person, Student>();
-            });
-            RequestDelegate
-            var obj = Mapper.Map<Student>(person);
-            //Logging.TestLogProvider();
-            //ConfigurationTest.ConfigurationTestConfig();
-            //var person = Activator.CreateInstance(typeof(Person), "tim") as Person;
-            TestWcfService();
-            Console.ReadLine();
+            MVCServices.WriteMVCServices();
+            Console.ReadKey();
         }
 
 

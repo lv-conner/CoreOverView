@@ -35,7 +35,6 @@ namespace OverViewConsoleApp.Services
         {
             IServiceProvider serviceProvider = GetServiceProvider();
             serviceProvider.GetService<IServiceScopeFactory>().CreateScope();
-            IServiceCollection
         }
     }
 }

@@ -19,7 +19,7 @@ namespace OverViewConsoleApp
     {
         static void Main(string[] args)
         {
-            MVCServices.WriteMVCServices();
+            OptionsTest.OptionsTest.OptionsReLoad();
             Console.ReadKey();
         }
 

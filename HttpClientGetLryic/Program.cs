@@ -57,6 +57,7 @@ namespace HttpClientGetLryic
 
         static async void CookiePath()
         {
+
             var handler = new CustomerHandler();
             handler.UseCookies = true;
             //添加cookie
@@ -93,14 +94,4 @@ namespace HttpClientGetLryic
             return base.SendAsync(request, cancellationToken);
         }
     }
-
-    public class CustomerMessageHandler : HttpMessageHandler
-    {
-        protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
-        {
-            request.
-        }
-    }
-
-
 }

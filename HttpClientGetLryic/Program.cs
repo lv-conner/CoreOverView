@@ -17,11 +17,12 @@ namespace HttpClientGetLryic
         static void Main(string[] args)
         {
             //PostData();
-            CookiePath();
-            //GetGithubData();
+            //CookiePath();
+            GetGithubData();
             Console.WriteLine("Hello World!");
             Console.ReadKey();
         }
+
 
 
 
@@ -74,8 +75,9 @@ namespace HttpClientGetLryic
         {
             var client = new HttpClient();
             client.DefaultRequestHeaders.Add("Accept", "application/vnd.github.v3+json");
+            client.DefaultRequestHeaders.Add("User-Agent", "HttpClientFactory-Sample");
             client.BaseAddress = new Uri("https://api.github.com");
-            var res = await client.GetAsync("users/octocat/orgs");
+            var res = await client.GetAsync("");
             //res.EnsureSuccessStatusCode();
             var message = await res.Content.ReadAsStringAsync();
             Console.WriteLine(message);

@@ -82,20 +82,24 @@ namespace WcfServices
         {
             if ((endpointConfiguration == EndpointConfiguration.NameService))
             {
-                System.ServiceModel.BasicHttpBinding result = new System.ServiceModel.BasicHttpBinding();
-                result.MaxBufferSize = int.MaxValue;
-                result.ReaderQuotas = System.Xml.XmlDictionaryReaderQuotas.Max;
-                result.MaxReceivedMessageSize = int.MaxValue;
-                result.AllowCookies = true;
+                System.ServiceModel.Channels.CustomBinding result = new System.ServiceModel.Channels.CustomBinding();
+                result.Elements.Add(new System.ServiceModel.Channels.BinaryMessageEncodingBindingElement());
+                System.ServiceModel.Channels.HttpTransportBindingElement httpBindingElement = new System.ServiceModel.Channels.HttpTransportBindingElement();
+                httpBindingElement.AllowCookies = true;
+                httpBindingElement.MaxBufferSize = int.MaxValue;
+                httpBindingElement.MaxReceivedMessageSize = int.MaxValue;
+                result.Elements.Add(httpBindingElement);
                 return result;
             }
             if ((endpointConfiguration == EndpointConfiguration.NameService1))
             {
-                System.ServiceModel.BasicHttpBinding result = new System.ServiceModel.BasicHttpBinding();
-                result.MaxBufferSize = int.MaxValue;
-                result.ReaderQuotas = System.Xml.XmlDictionaryReaderQuotas.Max;
-                result.MaxReceivedMessageSize = int.MaxValue;
-                result.AllowCookies = true;
+                System.ServiceModel.Channels.CustomBinding result = new System.ServiceModel.Channels.CustomBinding();
+                result.Elements.Add(new System.ServiceModel.Channels.BinaryMessageEncodingBindingElement());
+                System.ServiceModel.Channels.HttpTransportBindingElement httpBindingElement = new System.ServiceModel.Channels.HttpTransportBindingElement();
+                httpBindingElement.AllowCookies = true;
+                httpBindingElement.MaxBufferSize = int.MaxValue;
+                httpBindingElement.MaxReceivedMessageSize = int.MaxValue;
+                result.Elements.Add(httpBindingElement);
                 return result;
             }
             throw new System.InvalidOperationException(string.Format("找不到名称为“{0}”的终结点。", endpointConfiguration));
